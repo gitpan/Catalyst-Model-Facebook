@@ -1,5 +1,7 @@
 ---
-abstract: ~
+abstract: 'The Catalyst model for the package Facebook'
+author:
+  - 'Torsten Raudssus <torsten@raudssus.de> http://www.raudssus.de/'
 build_requires:
   ExtUtils::MakeMaker: 6.42
   Test::More: 0
@@ -23,4 +25,4 @@ requires:
   perl: 5.8.0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.001
+version: 0.002
