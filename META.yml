@@ -1,7 +1,7 @@
 ---
 abstract: 'The Catalyst model for the package Facebook'
 author:
-  - 'Torsten Raudssus <torsten@raudssus.de> http://www.raudssus.de/'
+  - 'Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>'
 build_requires:
   ExtUtils::MakeMaker: 6.42
   Test::More: 0
@@ -19,10 +19,11 @@ no_index:
     - inc
     - t
 requires:
+  Catalyst::Component::InstancePerContext: 0
   Catalyst::Runtime: 5.8
   Facebook: 0
   namespace::autoclean: 0
   perl: 5.8.0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.002
+version: 0.003
