@@ -1,4 +1,8 @@
 package Catalyst::Model::Facebook;
+BEGIN {
+  $Catalyst::Model::Facebook::VERSION = '0.004';
+}
+# ABSTRACT: The Catalyst model for the package Facebook
 
 use Moose;
 use Catalyst::Utils;
@@ -7,9 +11,6 @@ extends 'Catalyst::Model';
 with 'Catalyst::Component::InstancePerContext';
 
 use namespace::autoclean;
-
-our $VERSION = '0.003';
-$VERSION = eval $VERSION;
 
 has 'facebook_class' => (
 	is => 'ro',
@@ -39,10 +40,6 @@ has 'secret' => (
     default  => sub { die "we need your app secret" }
 );
 
-sub get_facebook_cookie {
-	my ( $self, $c ) = @_;
-}
-
 sub build_per_context_instance {
 	my ( $self, $c ) = @_;
 	
@@ -56,16 +53,22 @@ sub build_per_context_instance {
 			secret => $self->secret,
 		),
 	);
-	
 }
 
 1;
 
-=encoding utf8
+
+1;
+__END__
+=pod
 
 =head1 NAME
 
 Catalyst::Model::Facebook - The Catalyst model for the package Facebook
+
+=head1 VERSION
+
+version 0.004
 
 =head1 SYNOPSIS
 
@@ -94,12 +97,14 @@ Catalyst::Model::Facebook - The Catalyst model for the package Facebook
     }
 
   }
-  
+
 =head1 DESCRIPTION
 
 This package wraps around the L<Facebook> package. It uses the L</facebook_cookie_class> where it gives over L</app_id>, L</secret>
 and the text of the facebook cookie of this L</app_id>. This object will be used as cookie attribute for the construction of the
 L</facebook_class>. 
+
+=encoding utf8
 
 =head1 CONFIG PARAMETERS
 
@@ -139,7 +144,7 @@ Repository
 
   http://github.com/Getty/p5-catalyt-model-facebook
   Pull request and additional contributors are welcome
- 
+
 Issue Tracker
 
   http://github.com/Getty/p5-catalyt-model-facebook/issues
@@ -148,20 +153,12 @@ Issue Tracker
 
 Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>
 
-=head1 CONTRIBUTORS
+=head1 COPYRIGHT AND LICENSE
 
-Your name could be here.
+This software is copyright (c) 2010 by Raudssus Social Software & Facebook Distribution Authors.
 
-=head1 COPYRIGHT
-
-Copyright (c) 2010 the Facebook L</AUTHOR> and L</CONTRIBUTORS> as
-listed on L<Facebook> and all other packages in this distribution.
-
-=head1 LICENSE
-
-This library is free software and may be distributed under the same terms
-as perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
 
-1;

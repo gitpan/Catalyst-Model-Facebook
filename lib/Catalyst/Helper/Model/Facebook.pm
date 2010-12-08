@@ -1,12 +1,45 @@
 package Catalyst::Helper::Model::Facebook;
+BEGIN {
+  $Catalyst::Helper::Model::Facebook::VERSION = '0.004';
+}
+# ABSTRACT: Helper for Facebook models
 use strict;
 use warnings;
+
+
+sub mk_compclass {
+    my ( $self, $helper, $app_id, $secret, $facebook_class, $facebook_cookie_class ) = @_;
+
+	my %args = (
+		app_id => $app_id,
+		secret => $secret,
+		facebook_class => $facebook_class,
+		facebook_cookie_class => $facebook_cookie_class,
+	);
+	
+    $helper->render_file('modelclass', $helper->{file}, \%args);
+    return 1;
+}
+
+sub mk_comptest {
+    my ($self, $helper) = @_;
+    $helper->render_file('modeltest', $helper->{test});
+}
+
+
+1;
+
+
 
 =pod
 
 =head1 NAME
 
 Catalyst::Helper::Model::Facebook - Helper for Facebook models
+
+=head1 VERSION
+
+version 0.004
 
 =head1 SYNOPSIS
 
@@ -28,29 +61,6 @@ Makes the model class.
 
 Makes tests.
 
-=cut
-
-sub mk_compclass {
-    my ( $self, $helper, $app_id, $secret, $facebook_class, $facebook_cookie_class ) = @_;
-
-	my %args = (
-		app_id => $app_id,
-		secret => $secret,
-		facebook_class => $facebook_class,
-		facebook_cookie_class => $facebook_cookie_class,
-	);
-	
-    $helper->render_file('modelclass', $helper->{file}, \%args);
-    return 1;
-}
-
-sub mk_comptest {
-    my ($self, $helper) = @_;
-    $helper->render_file('modeltest', $helper->{test});
-}
-
-=pod
-
 =head1 SUPPORT
 
 IRC
@@ -61,7 +71,7 @@ Repository
 
   http://github.com/Getty/p5-catalyt-model-facebook
   Pull request and additional contributors are welcome
- 
+
 Issue Tracker
 
   http://github.com/Getty/p5-catalyt-model-facebook/issues
@@ -70,23 +80,15 @@ Issue Tracker
 
 Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>
 
-=head1 CONTRIBUTORS
+=head1 COPYRIGHT AND LICENSE
 
-Your name could be here.
+This software is copyright (c) 2010 by Raudssus Social Software & Facebook Distribution Authors.
 
-=head1 COPYRIGHT
-
-Copyright (c) 2010 the Facebook L</AUTHOR> and L</CONTRIBUTORS> as
-listed on L<Facebook> and all other packages in this distribution.
-
-=head1 LICENSE
-
-This library is free software and may be distributed under the same terms
-as perl itself.
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
 
-1;
 
 __DATA__
 

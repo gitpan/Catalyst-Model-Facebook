@@ -1,18 +1,55 @@
-use inc::Module::Install;
 
-name 'Catalyst-Model-Facebook';
+use strict;
+use warnings;
 
-perl_version '5.008';
-license 'perl';
-all_from 'lib/Catalyst/Model/Facebook.pm';
 
-requires 'Catalyst::Runtime' => 5.80;
-requires 'Catalyst::Component::InstancePerContext';
-requires 'Facebook';
-requires 'namespace::autoclean';
 
-test_requires 'Test::More';
+use ExtUtils::MakeMaker 6.31;
 
-auto_install;
 
-WriteAll;
+
+my %WriteMakefileArgs = (
+  'ABSTRACT' => 'The Catalyst model for the package Facebook',
+  'AUTHOR' => 'Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>',
+  'BUILD_REQUIRES' => {
+    'Test::More' => '0.96'
+  },
+  'CONFIGURE_REQUIRES' => {
+    'ExtUtils::MakeMaker' => '6.31'
+  },
+  'DISTNAME' => 'Catalyst-Model-Facebook',
+  'EXE_FILES' => [],
+  'LICENSE' => 'perl',
+  'NAME' => 'Catalyst::Model::Facebook',
+  'PREREQ_PM' => {
+    'Catalyst::Component::InstancePerContext' => '0.001001',
+    'Catalyst::Runtime' => '5.80',
+    'Facebook' => '0.007'
+  },
+  'VERSION' => '0.004',
+  'test' => {
+    'TESTS' => 't/*.t'
+  }
+);
+
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
+}
+
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
+
