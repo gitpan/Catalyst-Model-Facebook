@@ -24,9 +24,10 @@ my %WriteMakefileArgs = (
   'PREREQ_PM' => {
     'Catalyst::Component::InstancePerContext' => '0.001001',
     'Catalyst::Runtime' => '5.80',
-    'Facebook' => '0.007'
+    'Facebook' => '0.007',
+    'namespace::autoclean' => '0'
   },
-  'VERSION' => '0.004',
+  'VERSION' => '0.005',
   'test' => {
     'TESTS' => 't/*.t'
   }

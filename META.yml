@@ -17,10 +17,11 @@ requires:
   Catalyst::Component::InstancePerContext: 0.001001
   Catalyst::Runtime: 5.80
   Facebook: 0.007
+  namespace::autoclean: 0
 resources:
   homepage: http://github.com/Getty/p5-catalyst-model-facebook/tree
   repository: git://github.com/Getty/p5-catalyst-model-facebook.git
-version: 0.004
+version: 0.005
 x_Dist_Zilla:
   plugins:
     -
@@ -116,6 +117,10 @@ x_Dist_Zilla:
       name: '@GETTY/LocalInstall'
       version: 0.001
     -
+      class: Dist::Zilla::Plugin::Authority
+      name: '@GETTY/Authority'
+      version: 1.000
+    -
       class: Dist::Zilla::Plugin::Prereqs
       config:
         Dist::Zilla::Plugin::Prereqs:
@@ -180,3 +185,4 @@ x_Dist_Zilla:
     config:
       is_trial: 0
     version: 4.102342
+x_authority: cpan:GETTY

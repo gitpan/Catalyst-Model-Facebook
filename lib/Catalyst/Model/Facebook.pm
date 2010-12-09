@@ -1,6 +1,9 @@
 package Catalyst::Model::Facebook;
 BEGIN {
-  $Catalyst::Model::Facebook::VERSION = '0.004';
+  $Catalyst::Model::Facebook::AUTHORITY = 'cpan:GETTY';
+}
+BEGIN {
+  $Catalyst::Model::Facebook::VERSION = '0.005';
 }
 # ABSTRACT: The Catalyst model for the package Facebook
 
@@ -68,7 +71,7 @@ Catalyst::Model::Facebook - The Catalyst model for the package Facebook
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 SYNOPSIS
 

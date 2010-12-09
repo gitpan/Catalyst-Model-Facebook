@@ -1,6 +1,9 @@
 package Catalyst::Helper::Model::Facebook;
 BEGIN {
-  $Catalyst::Helper::Model::Facebook::VERSION = '0.004';
+  $Catalyst::Helper::Model::Facebook::AUTHORITY = 'cpan:GETTY';
+}
+BEGIN {
+  $Catalyst::Helper::Model::Facebook::VERSION = '0.005';
 }
 # ABSTRACT: Helper for Facebook models
 use strict;
@@ -39,7 +42,7 @@ Catalyst::Helper::Model::Facebook - Helper for Facebook models
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 SYNOPSIS
 

@@ -23,7 +23,8 @@
          "requires" : {
             "Catalyst::Component::InstancePerContext" : "0.001001",
             "Catalyst::Runtime" : "5.80",
-            "Facebook" : "0.007"
+            "Facebook" : "0.007",
+            "namespace::autoclean" : 0
          }
       },
       "test" : {
@@ -41,7 +42,7 @@
          "web" : "http://github.com/Getty/p5-catalyst-model-facebook/tree"
       }
    },
-   "version" : "0.004",
+   "version" : "0.005",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
@@ -160,6 +161,11 @@
             "version" : "0.001"
          },
          {
+            "class" : "Dist::Zilla::Plugin::Authority",
+            "name" : "@GETTY/Authority",
+            "version" : "1.000"
+         },
+         {
             "class" : "Dist::Zilla::Plugin::Prereqs",
             "config" : {
                "Dist::Zilla::Plugin::Prereqs" : {
@@ -245,6 +251,7 @@
          },
          "version" : "4.102342"
       }
-   }
+   },
+   "x_authority" : "cpan:GETTY"
 }
 
