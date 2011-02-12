@@ -3,7 +3,7 @@ BEGIN {
   $Catalyst::Model::Facebook::AUTHORITY = 'cpan:GETTY';
 }
 BEGIN {
-  $Catalyst::Model::Facebook::VERSION = '0.006';
+  $Catalyst::Model::Facebook::VERSION = '0.100';
 }
 # ABSTRACT: The Catalyst model for the package Facebook
 
@@ -56,27 +56,36 @@ sub build_per_context_instance {
 	Catalyst::Utils::ensure_class_loaded($self->facebook_class);
 	Catalyst::Utils::ensure_class_loaded($self->facebook_signed_class);
 
-	my $facebook_data = "";
-
-	if ( $c->req->cookie('fbs_'.$self->app_id) ) {
-		$facebook_data = join('&',$c->req->cookie('fbs_'.$self->app_id)->value);
+# canvas application
+	if (exists $c->req->params->{'signed_request'}) {
+		return $self->facebook_class->new(
+			signed => $self->facebook_signed_class->new(
+				canvas_param => $c->req->params->{'signed_request'},
+				secret => $self->secret,
+			),
+			app_id => $self->app_id,
+			api_key => $self->api_key,
+		);
+# website application
+	} elsif ($c->req->cookie('fbs_'.$self->app_id)) {
+		my $facebook_data = join('&',$c->req->cookie('fbs_'.$self->app_id)->value);
 		$facebook_data =~ s/^"|"$//g;
+		return $self->facebook_class->new(
+			signed => $self->facebook_signed_class->new(
+				cookie_param => $facebook_data,
+				secret => $self->secret,
+			),
+			app_id => $self->app_id,
+			api_key => $self->api_key,
+		);
 	}
-	
-	return $self->facebook_class->new(
-		signed => $self->facebook_signed_class->new(
-			facebook_data => $facebook_data,
-			secret => $self->secret,
-		),
-		app_id => $self->app_id,
-		api_key => $self->api_key,
-	);
 }
 
 1;
 
 
 1;
+
 __END__
 =pod
 
@@ -86,7 +95,7 @@ Catalyst::Model::Facebook - The Catalyst model for the package Facebook
 
 =head1 VERSION
 
-version 0.006
+version 0.100
 
 =head1 SYNOPSIS
 
@@ -172,13 +181,23 @@ Issue Tracker
 
   http://github.com/Getty/p5-catalyt-model-facebook/issues
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>
 
+=item *
+
+Frank Sheiness <syndesis@gmail.com>
+
+=back
+
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Raudssus Social Software & Facebook Distribution Authors.
+This software is copyright (c) 2011 by Raudssus Social Software & Facebook Distribution Authors.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

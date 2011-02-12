@@ -3,7 +3,7 @@ BEGIN {
   $Catalyst::Helper::Model::Facebook::AUTHORITY = 'cpan:GETTY';
 }
 BEGIN {
-  $Catalyst::Helper::Model::Facebook::VERSION = '0.006';
+  $Catalyst::Helper::Model::Facebook::VERSION = '0.100';
 }
 # ABSTRACT: Helper for Facebook models
 use strict;
@@ -47,7 +47,7 @@ Catalyst::Helper::Model::Facebook - Helper for Facebook models
 
 =head1 VERSION
 
-version 0.006
+version 0.100
 
 =head1 SYNOPSIS
 
@@ -88,13 +88,23 @@ Issue Tracker
 
   http://github.com/Getty/p5-catalyt-model-facebook/issues
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>
 
+=item *
+
+Frank Sheiness <syndesis@gmail.com>
+
+=back
+
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Raudssus Social Software & Facebook Distribution Authors.
+This software is copyright (c) 2011 by Raudssus Social Software & Facebook Distribution Authors.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

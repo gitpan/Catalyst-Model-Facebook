@@ -10,7 +10,7 @@ use ExtUtils::MakeMaker 6.31;
 
 my %WriteMakefileArgs = (
   'ABSTRACT' => 'The Catalyst model for the package Facebook',
-  'AUTHOR' => 'Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>',
+  'AUTHOR' => 'Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>, Frank Sheiness <syndesis@gmail.com>',
   'BUILD_REQUIRES' => {
     'Test::More' => '0.96'
   },
@@ -24,10 +24,10 @@ my %WriteMakefileArgs = (
   'PREREQ_PM' => {
     'Catalyst::Component::InstancePerContext' => '0.001001',
     'Catalyst::Runtime' => '5.80',
-    'Facebook' => '0.010',
+    'Facebook' => '0.100',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '0.006',
+  'VERSION' => '0.100',
   'test' => {
     'TESTS' => 't/*.t'
   }
