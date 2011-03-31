@@ -27,7 +27,7 @@ my %WriteMakefileArgs = (
     'Facebook' => '0.100',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '0.100',
+  'VERSION' => '0.101',
   'test' => {
     'TESTS' => 't/*.t'
   }

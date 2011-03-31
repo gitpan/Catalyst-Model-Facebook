@@ -22,7 +22,7 @@ requires:
 resources:
   homepage: http://github.com/Getty/p5-catalyst-model-facebook/tree
   repository: git://github.com/Getty/p5-catalyst-model-facebook.git
-version: 0.100
+version: 0.101
 x_Dist_Zilla:
   plugins:
     -
